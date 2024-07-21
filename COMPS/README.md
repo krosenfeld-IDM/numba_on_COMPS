@@ -2,8 +2,7 @@
 
 Build
 ```
-docker build -t comps .
-```
+cd```
 
 Run
 ```
