@@ -40,7 +40,7 @@ if __name__ == "__main__":
             walker=np.arange(3).tolist(),
         )
         ts.add_builder(sb)
-        num_threads = 1
+        num_threads = 8
         add_schedule_config(
             ts,
             command=cmdline,
@@ -49,5 +49,5 @@ if __name__ == "__main__":
             node_group_name="idm_abcd",
             Environment={"OMP_NUM_THREADS": str(num_threads)},
         )
-        experiment = Experiment.from_template(ts, name=f"numby_on_comps")
+        experiment = Experiment.from_template(ts, name=f"numpy_on_comps")
         experiment.run(wait_until_done=True, scheduling=True)
