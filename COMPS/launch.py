@@ -37,7 +37,7 @@ if __name__ == "__main__":
         sb = SimulationBuilder()
         sb.add_multiple_parameter_sweep_definition(
             update_parameter_callback,
-            walker=np.arange(3).tolist(),
+            walker=np.arange(8).tolist(),
         )
         ts.add_builder(sb)
         num_threads = 8
@@ -46,8 +46,8 @@ if __name__ == "__main__":
             command=cmdline,
             NumNodes=1,
             num_cores=num_threads,
-            node_group_name="idm_abcd",
-            Environment={"OMP_NUM_THREADS": str(num_threads)},
+            node_group_name="idm_48cores",
+            Environment={"NUMBA_NUM_THREADS": str(num_threads)},
         )
         experiment = Experiment.from_template(ts, name=f"numpy_on_comps")
         experiment.run(wait_until_done=True, scheduling=True)

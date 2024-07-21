@@ -28,11 +28,16 @@ def f_no_parallel(n):
 if __name__ == "__main__":
 
     niter = 100
-    n = nb.uint32(100_000)
+    n = nb.uint32(1_000_000)
+
+    print("parallel=True")
     f_parallel(5)
     for i in tqdm(range(niter)):
         f_parallel(n)
 
+    print("parallel=False")
     f_no_parallel(5)
     for i in tqdm(range(niter)):
         f_no_parallel(n)
+
+    print(f"Number of threads: {nb.get_num_threads()}")
